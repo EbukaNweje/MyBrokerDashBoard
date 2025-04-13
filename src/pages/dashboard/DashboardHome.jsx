@@ -47,7 +47,7 @@ const DashboardHome = () => {
   setLoading(true);
   try {
     const response = await axios.get(
-      `https://my-broker-back-end.vercel.app//api/userdata/${finalId}`
+      `https://my-broker-back-end.vercel.app/api/userdata/${finalId}`
     );
     setUserDatas(response?.data?.data);
     console.log(response?.data?.data);
