@@ -44,7 +44,7 @@ const Header = () => {
 
     const handleGetUser = async () => {
         setLoading(true)
-        await axios.get(`https://my-broker-back-end.vercel.app//api/userdata/${id}`)
+        await axios.get(`https://my-broker-back-end.vercel.app/api/userdata/${id}`)
             .then(response => {
                 setLoading(false)
                 setUserDatas(response?.data?.data);
@@ -222,7 +222,7 @@ const handleNavToPlan = () => {
                                         userDatas?.verify === true ? <p className="text-xs font-semibold text-green-500"> verified </p> : <p className="text-xs font-semibold text-red-500"> Unverified</p>
                                     }
                                 <p className="w-max flex items-center text-xs font-semibold">
-                                 { laoding ? <ClipLoader color='white' /> :  `${userDatas?.firstName} ${userDatas?.lastName}${" "}`}
+                                 { laoding ? <ClipLoader color='white' /> :  `${userDatas?.firstName} ${userDatas?.lastName} ${" "}`}
                                     <span>
                                         <FaCaretDown />
                                     </span>
